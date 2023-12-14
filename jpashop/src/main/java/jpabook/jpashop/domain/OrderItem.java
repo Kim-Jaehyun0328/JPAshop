@@ -28,4 +28,26 @@ public class OrderItem {
 
     private int count; //주문 수량
 
+
+    //==생성 매소드==//
+    public static OrderItem createOrderItem(Item item, Order order, int orderPrice, int count){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrder(order);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count); //주문이 되었기 때문
+        return orderItem;
+    }
+
+    //==비즈니스 로직==//
+    public void cancel() {
+        getItem().addStock(count);
+    }
+
+    public int getTotalPrice() {
+        return orderPrice * count;
+//        return getOrderPrice() * getCount();
+    }
 }
