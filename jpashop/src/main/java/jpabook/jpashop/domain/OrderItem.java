@@ -30,10 +30,9 @@ public class OrderItem {
 
 
     //==생성 매소드==//
-    public static OrderItem createOrderItem(Item item, Order order, int orderPrice, int count){
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
-        orderItem.setOrder(order);
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
 
