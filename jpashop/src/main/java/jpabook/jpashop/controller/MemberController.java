@@ -6,6 +6,7 @@ import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
 import jpabook.jpashop.web.MemberForm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +33,7 @@ public class MemberController {
     Address address = new Address(form.getCity(), form.getStreet(), form.getZipcode());
     Member member = new Member();
     member.setName(form.getName());
+    member.setAddress(address);
     memberService.join(member);
 
     return "redirect:/";
