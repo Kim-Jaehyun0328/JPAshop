@@ -34,6 +34,13 @@ public class MemberService {
         return memberRepository.findOne(memberId);
     }
 
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+    }
+
+
     private void validateDuplicateMember(Member member) {  //멀티쓰레드를 쓰면 더 안전
         List<Member> findMembers = memberRepository.findByName(member.getName());
 
